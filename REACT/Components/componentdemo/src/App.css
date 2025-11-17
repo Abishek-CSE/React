@@ -1,9 +1,32 @@
-body{
-    margin: 0;
-    padding: 0;
-}
+
 .ChennaiImage{
-    margin-left: 380px;
+    margin-left: 400px;
+    width: 650px;
+    height: 400px;
+}
+.navbar {
+    background-color: black;
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+.navbar a{
+    text-decoration: none;
+    color: white;
+}
+.navbar a:hover{
+    color: brown;
+}
+.KerlaImage{
+    margin-left: 400px;
+    width: 650px;
+    height: 400px;
+}
+.BangaloreImage{
+    margin-left: 400px;
     width: 650px;
     height: 400px;
 }
