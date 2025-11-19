@@ -25,7 +25,7 @@ const Navbar = ()=>{
                  <img src="https://i.mscwlns.co/media/misc/others/cart_m7qa5l.png?tr=w-50,c-at_max" class="icon-image" height="28" width="28" loading="lazy" alt="cart" data-testid="optimized-image" fetchpriority="auto"></img>
                 </div>
             </div>
-            </section>
+            </section>ṭ
         </>
     )
 }
