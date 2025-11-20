@@ -5,7 +5,7 @@ const Chennai = ()=>{
     return(
         <>
         <div>
-            
+            <h1 style={{textAlign:"center", backgroundColor:"black", color:"white"}}>WELCOME TO CHENNAI</h1>
             <img  className="ChennaiImage" src="./Chennai.jpg" alt="Chennai" />
             <It_Company/>
             <Robotic/>

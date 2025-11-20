@@ -1,24 +1,30 @@
-import Chennai from "./component/Chennai"
-import Karanataka from "./component/Karanataka"
-import Kerala from "./component/Kerala"
-import '../src/App.css'
 
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Chennai from './component/Chennai.jsx';
+import Kerala from './component/Kerala.jsx'; 
 
-const App =()=>{
-  return(
-    <>
-    <div>
-      <div className="navbar">
-        <a href="">CHENNAI</a>
-        <a href="">KERALA</a>
-        <a href="">KARNATAKA</a>
+import './App.css';
+import Karanataka from './component/Karanataka.jsx';
+
+const App = ()=> {
+  return (
+    <Router>
+      <div style={{ backgroundColor: 'black', color: 'white', padding: '20px', textAlign: 'center', marginBottom: '10px' }}>
+        <Link to="/chennai" style={{ color: 'white', margin: '0 10px', textDecoration: 'none' }}>CHENNAI</Link>
+        <Link to="/kerala" style={{ color: 'white', margin: '0 10px', textDecoration: 'none' }}>KERALA</Link>
+        <Link to="/karanataka" style={{ color: 'white', margin: '0 10px', textDecoration: 'none' }}>KARNATAKA</Link>
       </div>
-      <h1 style={{backgroundColor:"black", color:"white",padding:"20px",textAlign:"center",marginBottom:"10px"}}>WELCOME TO CHENNAI</h1>
-      <Chennai/>
-      <Kerala/>
-      <Karanataka/>
-    </div>
-    </>
-  )
+
+      <div className="content">
+        <Routes>
+          <Route path='/chennai' element={<Chennai />} />
+
+          <Route path='/karanataka' element={<Karanataka />} />
+          <Route path='/kerala' element={<Kerala />} />
+        </Routes>
+      </div>
+    </Router>
+  );
 }
-export default App
+
+export default App;
