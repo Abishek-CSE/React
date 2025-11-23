@@ -1,0 +1,11 @@
+import Colour from "./components/Colour"
+
+const App = () => {
+  return (
+    <>
+    <Colour/>
+    </>
+  )
+}
+
+export default App
