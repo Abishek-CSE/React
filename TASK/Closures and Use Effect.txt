@@ -1,0 +1,9 @@
+Closures => A closure is a function that retains access to its lexical scope even 
+when the function is exceuted outide that scope.
+It allow a function to remember and access variable from its outer function even after the outer function has finished executing.
+
+
+Key Points:
+Closures enable data privacy and encapsulation
+Useful ofr creating function factoies or maintaining state in async callbacks
+Common use cases: Event Handlers, callback function,
