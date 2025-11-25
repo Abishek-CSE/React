@@ -1,0 +1,178 @@
+useEffect =>useEffect is a React Hook that lets you run side effects in functional components.
+            A side effect is anything that affects something outside the component itself, such as:
+            **Fetching data from an API
+            **Updating the DOM manually
+            **Setting timers (setTimeout, setInterval)
+            **Listening to events
+            **Storing data in localStorage
+*Without useEffect, functional components would have no place to run code after render.
+
+Syntax of useEffect:
+
+useEffect(() => {
+  // side effect logic
+}, [dependencies]);
+
+
+1. Why do we use useEffect?
+✔ Run code after the component has rendered
+✔ Control when the side effect should run
+✔ Clean up effects when needed (event listeners, timers)
+
+2.Types of useEffect (Based on Dependency Array)
+. No Dependency Array:
+useEffect(() => {
+  console.log("Runs on every render");
+});
+Empty Dependency Array []:
+useEffect(() => {
+  console.log("Runs only once on mount");
+}, []);
+With Dependency Array
+useEffect(() => {
+  console.log("Runs when count changes");
+}, [count]);
+
+3.Relationship between useState and useEffect
+✔ useState triggers re-renders
+Whenever state updates, the component re-renders.
+✔ useEffect runs after those re-renders
+
+4.Is there any other option besides useEffect?
+Depending on the use-case, alternatives include:
+✔ useMemo
+For computational side effects (pure calculation), not real side effects.
+✔ useCallback
+For memoizing functions.
+✔ Event handlers
+Sometimes you don’t need an effect; placing the logic directly in the handler is better.
+✔ React Query / SWR (for data fetching)
+Better than using useEffect + fetch manually.
+✔ Server Components (Next.js)
+Can handle data fetching without useEffect.
+But for pure client-side effects, useEffect has no replacement.
+
+
+
+Most Asked useEffect Interview Questions — Simple & Perfect Answers::
+1. What is useEffect and why is it used?
+useEffect is a React Hook used to run side effects in functional components after rendering.
+Side effects include:
+Fetching data
+Subscribing to events
+Setting timers
+Updating DOM manually
+Why we use it?
+Because React renders components, but any external work (API call, event listeners, async actions) must be done after render — that’s what useEffect handles.
+
+2. What is the purpose of the dependency array?
+The dependency array controls when the effect runs.
+It tells React which values to watch.
+If any value in the array changes → effect re-runs.
+It helps:
+✔ Prevent unnecessary executions
+✔ Optimize performance
+✔ Avoid infinite loops
+
+3. Difference Between the Variants
+(1) useEffect(() => {})
+No dependency array
+Runs after every render
+Component mounts + every update
+Used for: logging, debugging (rarely used in real apps)
+
+(2) useEffect(() => {}, [])
+Empty dependency array
+Runs only once (on mount)
+Same as componentDidMount
+Used for:
+✔ Fetch data once
+✔ Initialize values
+✔ Load data from localStorage
+
+(3) useEffect(() => {}, [value])
+Runs when value changes
+Same as componentDidUpdate for that value
+Used for:
+✔ Re-fetch when a parameter changes
+✔ Run validation when form field changes
+
+4. What happens if you forget to add dependencies?
+Two possible issues:
+❌ The effect may not update when values change
+React will use stale values, causing incorrect behavior.
+❌ Or it can create an infinite loop
+Example :
+useEffect(() => {
+  setCount(count + 1);
+});
+
+5. How to prevent infinite loops with useEffect?
+✔ Always include correct dependencies
+✔ Never update state unconditionally inside an effect
+✔ Use conditions:
+useEffect(() => {
+  if (count < 5) setCount(count + 1);
+}, [count]);
+✔ Use cleanup properly
+✔ Avoid running async logic outside the effect
+
+6. What is the cleanup function in useEffect?
+A cleanup function is returned inside the effect to stop or remove anything created by the effect.
+Example:
+useEffect(() => {
+  const id = setInterval(() => console.log("run"), 1000);
+
+  return () => clearInterval(id); // cleanup
+}, []);
+Used for:
+Removing event listeners
+Clearing timers
+Closing subscriptions
+Stopping API calls
+Equivalent to componentWillUnmount.
+
+7. How does useEffect compare to lifecycle methods?
+Class Lifecycle Method	                   Functional Component Equivalent
+componentDidMount	                           useEffect(() => {}, [])
+componentDidUpdate	                           useEffect(() => {}, [deps])
+componentWillUnmount	                    Cleanup function return () => {...}
+useEffect can combine all three lifecycles in one hook.
+
+8.Can useEffect be async?
+No.
+The effect callback cannot be async because it must return either:
+nothing, or
+a cleanup function
+But you can write async code inside it:
+useEffect(() => {
+  const fetchData = async () => {
+    await fetch(...);
+  };
+  fetchData();
+}, []);
+
+
+9. Why does useEffect run twice in React Strict Mode?
+In development (not production), React Strict Mode intentionally runs effects twice to detect:
+Memory leaks
+Incorrect cleanup
+Unsafe side effects
+This double execution happens only in dev mode and only in Strict Mode.
+
+
+10. What is the relationship between useState and useEffect?
+useState and useEffect often work together:
+useState → holds data
+useEffect → reacts to changes in that data
+When setState updates state:
+Component re-renders
+useEffect runs after render
+Example:
+const [count, setCount] = useState(0);
+
+useEffect(() => {
+  console.log("Count updated:", count);
+}, [count]);
+Relationship:
+useState triggers updates → useEffect responds to those updates.
