@@ -1,22 +1,22 @@
-import { Route, Routes } from "react-router-dom"
-import Register from "./pages/Register"
-import Login from "./pages/Login"
-import Dashboard from "./pages/Dashboard"
-import Navbar from "./pages/Navbar"
+import { Route, Routes } from "react-router-dom";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import Layout from "./pages/Layout";
 
 const App = () => {
   return (
     <>
-    <Navbar/>
-    <main>
-      <Routes>
-        <Route path="/" element={<Register/>}/>
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/dashboard" element={<Dashboard/>}/>
-      </Routes>
-    </main>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+      </Layout>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
+

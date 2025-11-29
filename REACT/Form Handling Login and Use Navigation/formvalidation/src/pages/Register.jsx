@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../Formstyle.css";  
+
 const Register = () => {
   const [formdata, setFormData] = useState({firstname: "",lastname: "",email: "",phonenumber: "",Location: "",password: ""});
   const navigation = useNavigate();
@@ -16,9 +18,9 @@ const Register = () => {
     setFormData({firstname: "",lastname: "",email: "",phonenumber: "",Location: "", password: "",});
   }
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-sm">
-        <h2 className="text-2xl font-bold text-center">Register Form</h2>
+   <div className="min-h-screen flex items-center justify-center text-white   ">
+    <div className="form-container">
+    <h2 className="text-2xl font-bold text-center">Register Form</h2>
         <form onSubmit={formsubmit}>
           <div>
             <label className="block mb-1 font-medium">First Name</label>

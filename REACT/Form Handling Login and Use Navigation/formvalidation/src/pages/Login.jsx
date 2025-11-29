@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../Formstyle.css"; 
 
 const Login = () => {
   const [formdata, setFormdata] = useState({ email: "", password: "" });
@@ -31,9 +32,9 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-sm">
-        <h2 className="text-2xl font-bold text-center mb-4">Login Form</h2>
+    <div className="min-h-screen flex items-center justify-center text-white">
+  <div className="form-container">
+    <h2 className="text-2xl font-bold text-center mb-4">Login Form</h2>
 
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
